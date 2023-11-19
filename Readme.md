@@ -1,4 +1,4 @@
-Link do reposítorio: https://github.com/VitorBaraoDias/projeto_pwc.gi
+Link do reposítorio: https://github.com/VitorBaraoDias/projeto_pwc.git
 
 Membros do grupo 
 
