@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/Group 1-14.svg" type="image/x-icon">
+    <title>Happy Pet - Adoção</title>
+</head>
+
+<body class="container-form">
+
+    <header class="container container-header">
+        <div class="conteiner-group">
+            <img src="img/Group 1-14.svg" alt="">
+            <h1 class="fs-2 fw-semibold title">HAPPY PET!</h1>
+        </div>
+        <nav class="navigation-bar">
+            <a href="index.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0">Homepage</a>
+            <a href="sobre.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0">Sobre nós </a>
+            <a href="loja.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0">Loja</a>
+            <a href="adocao.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0 active">Cão para
+                adoção</a>
+            <a href="favoritos.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0">Favoritos</a>
+            <a href="contactos.html"
+                class="fw-light text-secondary-emphasis link-underline-light link-underline-opacity-0">Contactos</a>
+        </nav>
+        <div class="hamburger">
+            <svg xmlns="http://www.w3.org/2000/svg" id="openSideBar" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-menu">
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+        </div>
+        <div class="sidebar" id="left-bar">
+            <nav class="">
+                <svg xmlns="http://www.w3.org/2000/svg" style="color:white;float: right;
+                margin-left: auto;cursor:pointer;" id="closeSideBar" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-x">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+                <div class="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-home">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    <a href="index.html"
+                        class="fw-bold text-primary-emphasis link-underline-light lh- disable">Homepage</a>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-tv">
+                        <rect width="20" height="15" x="2" y="7" rx="2" ry="2" />
+                        <polyline points="17 2 12 7 7 2" />
+                    </svg>
+                    <a href="sobre.html"
+                        class="fw-bold text-primary-emphasis link-underline-dark lh- link-underline-opacity-0 disable">Sobre
+                        nós </a>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-presentation">
+                        <path d="M2 3h20" />
+                        <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+                        <path d="m7 21 5-5 5 5" />
+                    </svg>
+                    <a href="loja.html"
+                        class="fw-medium text-secondary-emphasis link-underline-light link-underline-opacity-0 disable">Loja</a>
+                </div>
+                <div class="active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-dog">
+                        <path
+                            d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5" />
+                        <path
+                            d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" />
+                        <path d="M8 14v.5" />
+                        <path d="M16 14v.5" />
+                        <path d="M11.25 16.25h1.5L12 17l-.75-.75Z" />
+                        <path
+                            d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306" />
+                    </svg>
+                    <a href=""
+                        class="fw-medium text-secondary-emphasis link-underline-light link-underline-opacity-0 ">Cães
+                        para adoção</a>
+
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-star">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <a href="favoritos.html"
+                        class="fw-medium text-secondary-emphasis link-underline-light link-underline-opacity-0 disable">Favoritos</a>
+                </div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-contact-2">
+                        <path d="M16 18a4 4 0 0 0-8 0" />
+                        <circle cx="12" cy="11" r="3" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <line x1="8" x2="8" y1="2" y2="4" />
+                        <line x1="16" x2="16" y1="2" y2="4" />
+                    </svg>
+                    <a href="contactos.html"
+                        class="fw-medium text-secondary-emphasis link-underline-light link-underline-opacity-0 disable">Contactos</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container bg-light rounded-3 box-shadow mt-4 pl-4 px-4">
+        <h1 class="pt-4">Cães para adoção</h1>
+        <form class="">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Nome completo</label>
+                <input type="text" id="nome" class="form-control" placeholder="Nome completo...">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Contacto telefónico *</label>
+                <input type="text" id="contacto" class="form-control" placeholder="Contacto telefónico...">
+
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Horário preferencial de contacto *</label>
+                <input type="text" id="horario" class="form-control"
+                    placeholder="Horário preferencial de contacto *">
+
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">E-mail *</label>
+                <input type="email" id="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Idade *</label>
+                <input type="text" id="idade" class="form-control" placeholder="Idade">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Morada *</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Cidade *</label>
+                <input type="text" class="form-control" placeholder="Cidade">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Cidade *</label>
+                <input type="text" class="form-control" placeholder="Profissão">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Se gostaria de adoptar um animal específico, indique por favor o
+                    nome do animal. *</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+            <p>Caso não procure adoptar um animal específico, indique se tem preferência pelo sexo do animal. *</p>
+            <div class="form-check">
+                <input class="form-check-input"  type="radio" value="option1" name="radioGenero"
+                    checked>
+                <label class="form-check-label" >
+                    Fêmea
+                </label>
+
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio"  name="radioGenero" value="option2">
+                <label class="form-check-label">
+                    Macho
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="radioGenero" value="option3">
+                <label class="form-check-label" for="exampleRadios3">
+                    Indiferente
+                </label>
+            </div>
+            <p>Qual o objetivo da adopção? *</p>
+            <div class="form-check">
+                <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" type="radio" name="checkObjetivo" checked value="Companhia para outro gato">
+
+                    Companhia para outro gato
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="defaultCheck2">
+                    <input class="form-check-input" type="radio" name="checkObjetivo" value="Companhia" >
+                    Companhia
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="defaultCheck2">
+                    <input class="form-check-input" type="radio" name="checkObjetivo" value="Criação">
+                    Criação
+                </label>
+            </div>
+
+            <p>Tipo de habitação *</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Apartamento
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                    Vivenda
+                </label>
+            </div>
+            <p>Se tem jardim, este está completamente vedado?</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jardim" value="option1"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Apartamento
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="jardim" id="exampleRadios2" valie="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                    Vivenda
+                </label>
+            </div>
+            <p>A habitação é *</p>
+            <div class="form-check">
+                <input class="form-check-input" id="habitacao" name="habitacao" type="radio" value="Grande" checked>
+                <label class="form-check-label" for="habitacao">
+                    Grande
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" id="habitacaoPequena" name="habitacao" type="radio" value="Pequena" >
+                <label class="form-check-label" for="habitacaoPequena">
+                    Pequena
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Quantos adultos vivem na casa? *</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp"
+                    placeholder="Quantos adultos vivem na casa?">
+            </div>
+
+            <p>Vivem crianças na casa? Se sim, indique o intervalo de idades. *</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="viver_criancas" value=" Não existem crianças" checked>
+                <label class="form-check-label" for="defaultCheck1">
+                    Não existem crianças
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="viver_criancas" value="5 anos">
+                <label class="form-check-label" for="defaultCheck2">
+                    < 5 anos </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="viver_criancas" value="5 a 10 anos">
+                <label class="form-check-label" for="defaultCheck2">
+                    5 a 10 anos
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="viver_criancas" value=" >10 anos">
+                <label class="form-check-label" for="defaultCheck2">
+                    >10 anos
+                </label>
+            </div>
+
+            <p>A casa é visitada frequentemente por crianças? *</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="frequentada_criancas" value="Sim"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Sim
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="frequentada_criancas" value="não">
+                <label class="form-check-label" for="exampleRadios2">
+                    não
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Tem outros animais em casa e/ou a seu cargo? Se sim, especifique por
+                    favor o tipo e a idade. *</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp"
+                    placeholder="O tipo e a idade">
+            </div>
+            <p>Que tipo de personalidade espera encontrar no animal? Preencha por favor as próximas questões:</p>
+
+            <p>Goste de crianças: *</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="criancas" value=" Muito importante"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Muito importante
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="criancas" value="Importante">
+                <label class="form-check-label" for="exampleRadios2">
+                    Importante
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="criancas" value="Pouco importante"
+                    >
+                <label class="form-check-label" for="exampleRadios3">
+                    Pouco importante
+                </label>
+            </div>
+
+
+            <p>Sociável com outros animais: *</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sociavel" value=" Muito importante"
+                    checked>
+                <label class="form-check-label" for="exampleRadios1">
+                    Muito importante
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="sociavel" value="Importante">
+                <label class="form-check-label" for="exampleRadios2">
+                    Importante
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="sociavel" value=" Pouco importante"
+                    >
+                <label class="form-check-label" for="exampleRadios3">
+                    Pouco importante
+                </label>
+            </div>
+            <button class="btn btn-primary mb-4 mt-4">Submeter</button>
+        </form>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/formulario.js"></script>
+</body>
+<script src="/js/index.js"></script>
+
+</html>

@@ -1,6 +1,6 @@
 const content_animals = document.querySelector('#content-animals');
 const apiUrl = 'https://api.petfinder.com/v2/animals';
-const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJvaktpdXNBSnNUdHh0RE9RRXh2c1NUVVpmczl4MlpzcHJKYWRYanZYNU5Zb1U0UjFORCIsImp0aSI6Ijc2OThjMDVmNTgyNzQwM2QzOTkxZTcwZTM0NDIzOTg2ZDA5MTZkMWI0M2Q3NWFjY2JiNzYyYzAzYTJiMTg5Yjc0YjQwZjg4NDUwYmRmY2UzIiwiaWF0IjoxNjk5ODc1NzA5LCJuYmYiOjE2OTk4NzU3MDksImV4cCI6MTY5OTg3OTMwOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.ycsUae5AvOED-CPusoei9nStaqJjhVYk0xow3GUL7D2HcoCHbF_TmO24HLJpVmwcFXZ9wZyd55wUCDQxqMBGcHTpwG3GYyNeOz91n3nc7xC-VxlB2GMJk2ACR7VV0_ZOsa83xutb_DVuKWOUHTF_vdTBv55PFCwVYIAuQfqj1iwbWTAA6Dv8xH2iARUlUIcEiTM3faKsLyHW1ptJxPGgY-F1m1eu-iOixxMo78-jhhEOkTcUuy6v0JljIE7My54AefK9kvD5fN4UrYVFjJfLGOPFFFr1-CT_uECXUUeamEbtbCvrrtvgJq30-wLVfg35Yxmu8yecZE3PzQhFAaFUdw';
+const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJvaktpdXNBSnNUdHh0RE9RRXh2c1NUVVpmczl4MlpzcHJKYWRYanZYNU5Zb1U0UjFORCIsImp0aSI6ImVmOTk0ODUxN2JhMDE3OWEzNzc2NjE3ODQxOTA2M2M1ODEwMzkwMWQ1YTVkNzY0ZjA3NTQ1NTc4NTk5MGU4YTkxODIxNmUxZDU0ODJjZmMzIiwiaWF0IjoxNzA1Njg0MDY2LCJuYmYiOjE3MDU2ODQwNjYsImV4cCI6MTcwNTY4NzY2Niwic3ViIjoiIiwic2NvcGVzIjpbXX0.c24f8gm-NaDN1KTltTVrtzzw_2av9MNa-DDs5rPy_cInxXhUra0WKU52WTlLMv2wygW33Dx5NZPfMp-pEA-L_EsDmwPE_Mjowc1gf-i0eDRlYhnbqRmqr5TvJy0PjFBXAwlMEtVFRbDJ98BDSGlNMyGZdTJaQDqLL1ZZjEae-w_lLyUU4oEZdrbIt9fel_XB9pLkS-EUyhQrRPl-bQYztxcOTiCyQdpxFW6sK03o7ecAqpOt871iyGTBABlYEunzsy7HCyXg8VuA6lV4jes47YQ_6ZvS6pttnoRSQoVXWDw7xZUQ7WgcCfNT4yD14g35aRBtxK48wH7Jd4MCv3aVzg';
 getAnimalsFav();
 function getAnimalsFav(){
     const dogsFavoritos = obterIdsArmazenados();
@@ -9,26 +9,27 @@ function getAnimalsFav(){
       });
 }
 function obterIdsArmazenados() {
-    const storedAnimalIds = localStorage.getItem('animalIds') ? localStorage.getItem('animalIds').split(',') : [];
-    return storedAnimalIds;
+  let storedAnimalIds = JSON.parse(localStorage.getItem("animalIds")) || [];
+  return storedAnimalIds;
 }
-function carregarDog(animalId){
-    fetch(`${apiUrl}/${animalId}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          addDogDiv(data.animal);
-        })
-        .catch(error => {
-          console.error('Erro ao obter animais da PetFinder:', error);
-        });
+function carregarDog(animalId) {
+  $.ajax({
+    url: `${apiUrl}/${animalId}`,
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    success: function(data) {
+      console.log(data);
+      addDogDiv(data.animal);
+    },
+    error: function(error) {
+      console.error('Erro ao obter animais da PetFinder:', error);
+    }
+  });
 }
+
 function getRandomElement(arr) {
     //retorna o um elemento aleatorio do array
     return arr[Math.floor(Math.random() * arr.length)];
@@ -78,16 +79,40 @@ function setFavorito(animalId){
     }
     fav.classList.toggle("active");
 }
-function deleteFav(animalId){
-    let storedAnimalIds = localStorage.getItem('animalIds') ? localStorage.getItem('animalIds').split(',') : [];
-    //encontra dentro do array o index que contei o id do anial
-    const index = storedAnimalIds.indexOf(animalId.toString());
-    if (index !== -1) {
-        //remoe do array
-        storedAnimalIds.splice(index, 1);
-        localStorage.setItem('animalIds', storedAnimalIds);
-        console.log(`O animalId ${animalId} foi removido do localStorage.`);
-    } else {
-        console.log(`O animalId ${animalId} não foi encontrado no localStorage.`);
+function validarFav(array,animalIds_){
+
+  let obj = array.find(o => o == animalIds_);
+  // Retorna true se o objeto for encontrado
+  return obj !== undefined;
+}
+function addStorage(animalId){
+
+  //obj to array
+    if(typeof(Storage) !== "undefined"){
+  
+      var ids_animals = JSON.parse(localStorage.getItem("animalIds")) || [];
+      if(!validarFav(ids_animals, animalId)){
+  
+        ids_animals.push(animalId);
+        localStorage.setItem("animalIds", JSON.stringify(ids_animals));
+        window.alert("adicionado dos favoritos");
+      }
+      else window.alert("removido dos favoritos");
+  
     }
+    else console.log("Nao suporta cookies")
+}
+function deleteFav(animalId){
+  let storedAnimalIds = JSON.parse(localStorage.getItem("animalIds")) || [];
+  //encontra dentro do array o index que contei o id do anial
+  console.log(storedAnimalIds)
+  const index = storedAnimalIds.indexOf(parseInt(animalId));
+  if (index !== -1) {
+      //remoe do array
+      storedAnimalIds.splice(index, 1);
+      localStorage.setItem('animalIds', JSON.stringify(storedAnimalIds));
+      console.log(`O animalId ${animalId} foi removido do localStorage.`);
+  } else {
+      console.log(`O animalId ${animalId} não foi encontrado no localStorage.`);
+  }
 }

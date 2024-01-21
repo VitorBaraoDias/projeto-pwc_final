@@ -1,5 +1,5 @@
 const apiUrl = 'https://api.petfinder.com/v2/animals';
-const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJvaktpdXNBSnNUdHh0RE9RRXh2c1NUVVpmczl4MlpzcHJKYWRYanZYNU5Zb1U0UjFORCIsImp0aSI6Ijc2OThjMDVmNTgyNzQwM2QzOTkxZTcwZTM0NDIzOTg2ZDA5MTZkMWI0M2Q3NWFjY2JiNzYyYzAzYTJiMTg5Yjc0YjQwZjg4NDUwYmRmY2UzIiwiaWF0IjoxNjk5ODc1NzA5LCJuYmYiOjE2OTk4NzU3MDksImV4cCI6MTY5OTg3OTMwOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.ycsUae5AvOED-CPusoei9nStaqJjhVYk0xow3GUL7D2HcoCHbF_TmO24HLJpVmwcFXZ9wZyd55wUCDQxqMBGcHTpwG3GYyNeOz91n3nc7xC-VxlB2GMJk2ACR7VV0_ZOsa83xutb_DVuKWOUHTF_vdTBv55PFCwVYIAuQfqj1iwbWTAA6Dv8xH2iARUlUIcEiTM3faKsLyHW1ptJxPGgY-F1m1eu-iOixxMo78-jhhEOkTcUuy6v0JljIE7My54AefK9kvD5fN4UrYVFjJfLGOPFFFr1-CT_uECXUUeamEbtbCvrrtvgJq30-wLVfg35Yxmu8yecZE3PzQhFAaFUdw';
+const apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJvaktpdXNBSnNUdHh0RE9RRXh2c1NUVVpmczl4MlpzcHJKYWRYanZYNU5Zb1U0UjFORCIsImp0aSI6ImRiN2JhOTE2NGI5M2I5ZTI2ZjM2Y2RjZTVhNmI0ZjQxNjZkZWUzYWE2ZmUxZTQ4NzBiMjMzYTE0ZjEyZDc2NGU2NzhjYmJjZWYwOWZjNDE3IiwiaWF0IjoxNzA1Njg0NjIzLCJuYmYiOjE3MDU2ODQ2MjMsImV4cCI6MTcwNTY4ODIyMywic3ViIjoiIiwic2NvcGVzIjpbXX0.S_ypMn-_7wNArNe4rTvmwzi-JZswwur1W6QpoKzLDbfKzxwmHNbrXg6xPzY1kEnyWal0u8Vwoy7IWHnPJ70PKfG80Et0sP9Z7f1w3my0EpdVa8ieG2YYZHf74ELmMVmdbfQC52z-xPqqeUP9N8JLUO9V_9K27s75Otua8XpbGy9eNTmFRxn9efGSHt4OwqrnmXHyTw3oKGtoy-_Y7ZHZKaPtfbXr3XvsEphutGg_sqvQzOzB1SFXekF2VWGyCZBnYmZgnuKEP6bIvWqFGsyVqupYf5QjWsOKmp0AEuAbG2k-PGIIZyv0NhMSwK47JZc4ROu17TAP_Ifw_r8fRUG-bA';
 const cabecalho_dog = document.getElementById('cabecalho-dog');
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,29 +10,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carrega os detalhes do animal com base no ID
     carregarDetalhes(animalId);
   });
-function carregarDetalhes(animalId){
-    fetch(`${apiUrl}/${animalId}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          jsonToHtml(data);
-        })
-        .catch(error => {
-          console.error('Erro ao obter animais da PetFinder:', error);
-        });
-}
+  function carregarDetalhes(animalId) {
+    $.ajax({
+      url: `${apiUrl}/${animalId}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      success: function(data) {
+        console.log(data);
+        //tranforma a inf recebida para html
+        jsonToHtml(data);
+      },
+      error: function(error) {
+        window.alert("Ups, não existe os detalhes do cão que selecionou");
+        window.location.href = `../adocao.html`;
+        console.error('Erro ao obter detalhes do animal da PetFinder:', error);
+      }
+    });
+  }
+  
 function jsonToHtml(data) {
     console.log(data)
     const nome = document.getElementById("nomeDog");
     const estadoAdocao = document.getElementById("estadoAdocao");
     const img = document.getElementById('img-detalhe');
-
+    //preencher html
     nome.textContent = "Detalhes de " + data.animal.name;
     estadoAdocao.textContent = data.animal.status == 'adoptable' ? 'Estado de adoção: Adotável' : 'Não é possível adotar';
     img.src = data.animal.primary_photo_cropped && data.animal.primary_photo_cropped.medium ? data.animal.primary_photo_cropped.medium : 'não possui imagem';
@@ -43,7 +47,7 @@ function jsonToHtml(data) {
 function getTable(data) {
     const tbody = document.querySelector('tbody'); 
     const animal = data.animal;
-
+    //chaves para construir a tabela
     const propriedades = [
         { chave: 'Nome do Animal', valor: animal.name },
         { chave: 'Idade', valor: animal.age },
@@ -55,7 +59,7 @@ function getTable(data) {
         { chave: 'Características', valor: animal.tags.join(', ') },
         { chave: 'Descrição', valor: animal.description || 'Não possui descrição' }
     ];
-
+    //percorrer o array de objeto propriedades e tirar a chave e o valor para construir a tabela
     propriedades.forEach(({ chave, valor }) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `<td>${chave}</td><td>${valor}</td>`;
@@ -64,7 +68,8 @@ function getTable(data) {
 }
 function addButtonAdotar(animalId){
   const buttonHTML = `
-  <button href="#" class="btn btn-primary" onclick="adotarDog(${animalId})">Adotar</button>`;
+  <a href="formulario.html"
+  ><button class="btn btn-primary">Adotar</button></a>`;
   cabecalho_dog.insertAdjacentHTML('beforeend',buttonHTML);
 }
 function adotarDog(animalId){
@@ -83,9 +88,10 @@ function verificarAdocao(){
   
 }
 function addStorage(animalName){
-  const storedAnimalName = localStorage.getItem('caoAdotado') ? localStorage.getItem('caoAdotado').split(',') : [];
+  //se nao existir um localstorage cria um array
+  const storedAnimalName = JSON.parse(localStorage.getItem("caoAdotado")) || [];
   //adiciona no array
   storedAnimalName.push(animalName);
-  localStorage.setItem('caoAdotado', storedAnimalName);
+  localStorage.setItem('caoAdotado', JSON.stringify(storedAnimalName));
 }
 
