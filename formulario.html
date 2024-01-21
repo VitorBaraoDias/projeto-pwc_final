@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/Group 1-14.svg" type="image/x-icon">
     <title>Happy Pet - Adoção</title>
@@ -129,9 +132,33 @@
             </nav>
         </div>
     </header>
+    <!-- <div class="content-modal" id="modal">
+        <div class="modall-center">
+            <div class="containerModal">
+                <div class="containerModal-header d-flex align-items-center justify-content-between">
+                    <h1>Parabens !</h1>
+                    <svg class="rotate" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                        fill="none" stroke="#dda01d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-dog">
+                        <path
+                            d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5" />
+                        <path
+                            d="M14.267 5.172c0-1.39 1.577-2.493 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" />
+                        <path d="M8 14v.5" />
+                        <path d="M16 14v.5" />
+                        <path d="M11.25 16.25h1.5L12 17l-.75-.75Z" />
+                        <path
+                            d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306" />
+                    </svg>
+                </div>
+                <p class="mt-2">Acabou de adotar um amigo!</p>
+                <button type="button" class="btn btn-primary w-100" onclick="changeModal()">Parabens!</button>
+            </div>
+        </div>
+    </div> -->
     <div class="container bg-light rounded-3 box-shadow mt-4 pl-4 px-4">
-        <h1 class="pt-4">Cães para adoção</h1>
-        <form class="">
+        <h1 class="pt-4" id="nomeCaoAdocao">Cães para adoção</h1>
+        <form class="" onsubmit="return voltarPaginaAdocao()">
             <div class="form-group">
                 <label for="formGroupExampleInput">Nome completo</label>
                 <input type="text" id="nome" class="form-control" placeholder="Nome completo...">
@@ -143,8 +170,7 @@
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Horário preferencial de contacto *</label>
-                <input type="text" id="horario" class="form-control"
-                    placeholder="Horário preferencial de contacto *">
+                <input type="text" id="horario" class="form-control" placeholder="Horário preferencial de contacto *">
 
             </div>
             <div class="form-group">
@@ -174,15 +200,14 @@
             </div>
             <p>Caso não procure adoptar um animal específico, indique se tem preferência pelo sexo do animal. *</p>
             <div class="form-check">
-                <input class="form-check-input"  type="radio" value="option1" name="radioGenero"
-                    checked>
-                <label class="form-check-label" >
+                <input class="form-check-input" type="radio" value="option1" name="radioGenero" checked>
+                <label class="form-check-label">
                     Fêmea
                 </label>
 
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio"  name="radioGenero" value="option2">
+                <input class="form-check-input" type="radio" name="radioGenero" value="option2">
                 <label class="form-check-label">
                     Macho
                 </label>
@@ -196,14 +221,15 @@
             <p>Qual o objetivo da adopção? *</p>
             <div class="form-check">
                 <label class="form-check-label" for="defaultCheck1">
-                    <input class="form-check-input" type="radio" name="checkObjetivo" checked value="Companhia para outro gato">
+                    <input class="form-check-input" type="radio" name="checkObjetivo" checked
+                        value="Companhia para outro gato">
 
                     Companhia para outro gato
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label" for="defaultCheck2">
-                    <input class="form-check-input" type="radio" name="checkObjetivo" value="Companhia" >
+                    <input class="form-check-input" type="radio" name="checkObjetivo" value="Companhia">
                     Companhia
                 </label>
             </div>
@@ -216,8 +242,7 @@
 
             <p>Tipo de habitação *</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" value="option1"
-                    checked>
+                <input class="form-check-input" type="radio" name="exampleRadios" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Apartamento
                 </label>
@@ -230,8 +255,7 @@
             </div>
             <p>Se tem jardim, este está completamente vedado?</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="jardim" value="option1"
-                    checked>
+                <input class="form-check-input" type="radio" name="jardim" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Apartamento
                 </label>
@@ -250,7 +274,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" id="habitacaoPequena" name="habitacao" type="radio" value="Pequena" >
+                <input class="form-check-input" id="habitacaoPequena" name="habitacao" type="radio" value="Pequena">
                 <label class="form-check-label" for="habitacaoPequena">
                     Pequena
                 </label>
@@ -264,7 +288,8 @@
 
             <p>Vivem crianças na casa? Se sim, indique o intervalo de idades. *</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="viver_criancas" value=" Não existem crianças" checked>
+                <input class="form-check-input" type="radio" name="viver_criancas" value=" Não existem crianças"
+                    checked>
                 <label class="form-check-label" for="defaultCheck1">
                     Não existem crianças
                 </label>
@@ -289,8 +314,7 @@
 
             <p>A casa é visitada frequentemente por crianças? *</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="frequentada_criancas" value="Sim"
-                    checked>
+                <input class="form-check-input" type="radio" name="frequentada_criancas" value="Sim" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Sim
                 </label>
@@ -304,15 +328,13 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Tem outros animais em casa e/ou a seu cargo? Se sim, especifique por
                     favor o tipo e a idade. *</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp"
-                    placeholder="O tipo e a idade">
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="O tipo e a idade">
             </div>
             <p>Que tipo de personalidade espera encontrar no animal? Preencha por favor as próximas questões:</p>
 
             <p>Goste de crianças: *</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="criancas" value=" Muito importante"
-                    checked>
+                <input class="form-check-input" type="radio" name="criancas" value=" Muito importante" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Muito importante
                 </label>
@@ -324,8 +346,7 @@
                 </label>
             </div>
             <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="criancas" value="Pouco importante"
-                    >
+                <input class="form-check-input" type="radio" name="criancas" value="Pouco importante">
                 <label class="form-check-label" for="exampleRadios3">
                     Pouco importante
                 </label>
@@ -334,8 +355,7 @@
 
             <p>Sociável com outros animais: *</p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="sociavel" value=" Muito importante"
-                    checked>
+                <input class="form-check-input" type="radio" name="sociavel" value=" Muito importante" checked>
                 <label class="form-check-label" for="exampleRadios1">
                     Muito importante
                 </label>
@@ -347,8 +367,7 @@
                 </label>
             </div>
             <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="sociavel" value=" Pouco importante"
-                    >
+                <input class="form-check-input" type="radio" name="sociavel" value=" Pouco importante">
                 <label class="form-check-label" for="exampleRadios3">
                     Pouco importante
                 </label>
@@ -356,7 +375,6 @@
             <button class="btn btn-primary mb-4 mt-4">Submeter</button>
         </form>
     </div>
-    <script src="js/api.js"></script>
     <script src="js/formulario.js"></script>
 </body>
 <script src="/js/index.js"></script>
